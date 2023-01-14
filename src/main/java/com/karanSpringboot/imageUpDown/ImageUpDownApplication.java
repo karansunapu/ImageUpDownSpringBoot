@@ -20,6 +20,21 @@ public class ImageUpDownApplication {
 	@Autowired
 	private ImageUpDownService service;
 
+	@PostMapping("/fileSystem")
+	public ResponseEntity<?> saveImageToFileSystem(@RequestParam("imageFile") MultipartFile fileData) throws IOException {
+		String response = service.uploadImageFileSystem(fileData);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(response);
+	}
+
+	@GetMapping("/fileSystem/{fileName}")
+	public ResponseEntity<?> getImageFromFileSystem(@PathVariable String fileName) throws IOException {
+		byte[] imageData = service.downloadImageFileSystem(fileName);
+		return ResponseEntity.status(HttpStatus.OK)
+				.contentType(MediaType.valueOf("image/png"))
+				.body(imageData);
+	}
+
 	@PostMapping
 	public ResponseEntity<?> saveImage(@RequestParam("imageFile") MultipartFile fileData) throws IOException {
 		String response = service.uploadImage(fileData);

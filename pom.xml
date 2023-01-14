@@ -12,7 +12,7 @@
 	<artifactId>imageUpDown</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>imageUpDown</name>
-	<description>Image Upload Download from DB using SpringBoot</description>
+	<description>Image Upload Download from DB/File System using SpringBoot</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
